@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Brenner Pass",
+        "location": "Austria / Italy",
+        "type": "Transit",
+        "confidence": "Confirmed",
+        "summary": "Major Alpine corridor used during postwar movement into Italy.",
+        "context": "After 1945, large refugee flows moved through this pass. Administrative breakdown allowed mixed populations to travel south."
+      },
+      "geometry": { "type": "Point", "coordinates": [11.5053, 47.0009] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Rome Node",
+        "location": "Rome, Italy",
+        "type": "Documentation",
+        "confidence": "Confirmed",
+        "summary": "Postwar document and transit hub.",
+        "context": "Certain networks in Rome assisted displaced persons with travel papers during the late 1940s."
+      },
+      "geometry": { "type": "Point", "coordinates": [12.4731, 41.8986] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Port of Genoa",
+        "location": "Genoa, Italy",
+        "type": "Departure",
+        "confidence": "Confirmed",
+        "summary": "Primary maritime departure point.",
+        "context": "Ships departing here carried migrants and others to destinations in South America after the war."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.9463, 44.4048] }
+    }
+  ]
+}
