@@ -1,11 +1,11 @@
 const map = L.map('map', {
   zoomControl: true,
   scrollWheelZoom: true
-}).setView([45, 11], 5);
+}).setView([44.8, 10.6], 5);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
-  attribution: '&copy; OpenStreetMap contributors'
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
 }).addTo(map);
 
 let siteFeatures = [];
@@ -85,6 +85,8 @@ function renderDetails(feature) {
 
     <button class="primary-button">View Full Case File</button>
   `;
+
+  panel.scrollTop = 0;
 }
 
 function renderFeaturedCards(features) {
@@ -128,9 +130,9 @@ fetch('assets/data/routes.geojson')
   .then(data => {
     L.geoJSON(data, {
       style: {
-        color: '#c43d3d',
+        color: '#d34848',
         weight: 3,
-        opacity: 0.85,
+        opacity: 0.9,
         dashArray: '7,9'
       }
     }).addTo(routeLayer);
