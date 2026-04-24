@@ -44,6 +44,20 @@ function applyFilters() {
   });
 }
 
+function renderFeaturedCards(features) {
+  const container = document.getElementById('featuredCards');
+  container.innerHTML = features.map((f,i)=>`<div class="feature-card" data-i="${i}"><div class="feature-card-body"><h3>${f.properties.title}</h3><p>${f.properties.location}</p></div></div>`).join('');
+
+  container.querySelectorAll('.feature-card').forEach(card=>{
+    card.onclick=()=>{
+      const f=features[card.dataset.i];
+      renderDetails(f);
+      const [lon,lat]=f.geometry.coordinates;
+      map.flyTo([lat,lon],6);
+    }
+  });
+}
+
 function renderDetails(feature) {
   const p = feature.properties;
   const panel = document.getElementById('detailPanel');
@@ -57,9 +71,6 @@ function renderDetails(feature) {
       </div>
       <span class="confidence-badge ${p.confidence.toLowerCase()}">${p.confidence}</span>
     </div>
-
-    <div class="site-image"></div>
-
     <div class="detail-block"><h3>Summary</h3><p>${p.summary}</p></div>
     <div class="detail-block"><h3>Context</h3><p>${p.context}</p></div>
   `;
@@ -72,6 +83,7 @@ fetch('assets/data/sites.geojson')
   siteFeatures=data.features;
   siteFeatures.forEach(createMarker);
   applyFilters();
+  renderFeaturedCards(siteFeatures);
 });
 
 fetch('assets/data/routes.geojson')
@@ -83,15 +95,25 @@ fetch('assets/data/routes.geojson')
   document.getElementById(id).addEventListener('change',applyFilters);
 });
 
-// collapse
+// collapse layer panel
 const btn=document.getElementById('layerPanelToggle');
 const body=document.getElementById('layerPanelBody');
-btn.addEventListener('click',()=>{
+btn.onclick=()=>{
   const open=btn.getAttribute('aria-expanded')==='true';
   btn.setAttribute('aria-expanded',!open);
   body.style.display=open?'none':'block';
   btn.querySelector('.toggle-symbol').textContent=open?'+':'−';
-});
+};
+
+// featured collapse
+const fbtn=document.getElementById('featuredPanelToggle');
+const fpanel=document.getElementById('featuredPanel');
+fbtn.onclick=()=>{
+  const open=fbtn.getAttribute('aria-expanded')==='true';
+  fbtn.setAttribute('aria-expanded',!open);
+  fpanel.style.height=open?'40px':'auto';
+  fbtn.textContent=open?'+':'−';
+};
 
 // route toggle
 document.getElementById('routesToggle').addEventListener('change',e=>{
