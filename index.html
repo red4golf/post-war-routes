@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Postwar Routes</title>
+  <meta name="description" content="A field-map of documented post-WWII routes, transit points, and historical aftermath locations." />
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-lockup">
+      <div class="compass-mark" aria-hidden="true">✥</div>
+      <div>
+        <h1>POSTWAR ROUTES</h1>
+        <p>Mapping Europe’s Postwar Movement Corridors, 1945–1950</p>
+      </div>
+    </div>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a class="active" href="#">Map</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#about">About</a>
+      <a href="#resources">Resources</a>
+      <button id="aboutButton" class="info-button" aria-label="About this project">i</button>
+    </nav>
+  </header>
+
+  <main class="app-shell">
+    <div id="map" aria-label="Interactive postwar routes map"></div>
+
+    <aside class="layer-panel glass-panel" aria-label="Map controls">
+      <section>
+        <h2>Map Layers</h2>
+        <label><input type="checkbox" id="confirmedToggle" checked> <span class="pin-dot confirmed"></span> Confirmed Sites</label>
+        <label><input type="checkbox" id="probableToggle" checked> <span class="pin-dot probable"></span> Probable Sites</label>
+        <label><input type="checkbox" id="disputedToggle"> <span class="pin-dot disputed"></span> Disputed Sites</label>
+        <label><input type="checkbox" id="routesToggle" checked> <span class="route-swatch"></span> Route Lines</label>
+      </section>
+      <section>
+        <h2>Site Types</h2>
+        <div class="legend-row"><span class="pin-dot transit"></span> Transit Point</div>
+        <div class="legend-row"><span class="pin-dot documentation"></span> Documentation / Aid Node</div>
+        <div class="legend-row"><span class="pin-dot departure"></span> Departure Point</div>
+        <div class="legend-row"><span class="pin-dot residence"></span> Known Residence</div>
+      </section>
+    </aside>
+
+    <aside id="detailPanel" class="detail-panel" aria-live="polite"></aside>
+
+    <section class="featured-panel glass-panel" aria-label="Featured sites">
+      <div class="featured-header">
+        <h2>Explore Featured Sites</h2>
+        <button id="nextFeature" aria-label="Next featured site">›</button>
+      </div>
+      <div id="featuredCards" class="featured-cards"></div>
+    </section>
+  </main>
+
+  <div id="aboutModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+    <div class="modal-card">
+      <button id="closeModal" class="close-button" aria-label="Close">×</button>
+      <h2 id="aboutTitle">About Postwar Routes</h2>
+      <p>This project is an educational field map focused on documented post-WWII movement corridors, transit points, and historical aftermath locations.</p>
+      <p>Entries are separated by confidence level so confirmed history stays distinct from probable or disputed claims.</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
