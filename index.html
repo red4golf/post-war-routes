@@ -30,21 +30,27 @@
   <main class="app-shell">
     <div id="map" aria-label="Interactive postwar routes map"></div>
 
-    <aside class="layer-panel glass-panel" aria-label="Map controls">
-      <section>
-        <h2>Map Layers</h2>
-        <label><input type="checkbox" id="confirmedToggle" checked> <span class="pin-dot confirmed"></span> Confirmed Sites</label>
-        <label><input type="checkbox" id="probableToggle" checked> <span class="pin-dot probable"></span> Probable Sites</label>
-        <label><input type="checkbox" id="disputedToggle"> <span class="pin-dot disputed"></span> Disputed Sites</label>
-        <label><input type="checkbox" id="routesToggle" checked> <span class="route-swatch"></span> Route Lines</label>
-      </section>
-      <section>
-        <h2>Site Types</h2>
-        <div class="legend-row"><span class="pin-dot transit"></span> Transit Point</div>
-        <div class="legend-row"><span class="pin-dot documentation"></span> Documentation / Aid Node</div>
-        <div class="legend-row"><span class="pin-dot departure"></span> Departure Point</div>
-        <div class="legend-row"><span class="pin-dot residence"></span> Known Residence</div>
-      </section>
+    <aside id="layerPanel" class="layer-panel glass-panel" aria-label="Map controls">
+      <button id="layerPanelToggle" class="panel-toggle" aria-expanded="true" aria-controls="layerPanelBody">
+        <span>Map Layers</span>
+        <span class="toggle-symbol">−</span>
+      </button>
+      <div id="layerPanelBody" class="layer-panel-body">
+        <section>
+          <h2>Map Layers</h2>
+          <label><input type="checkbox" id="confirmedToggle" checked> <span class="pin-dot confirmed"></span> Confirmed Sites</label>
+          <label><input type="checkbox" id="probableToggle" checked> <span class="pin-dot probable"></span> Probable Sites</label>
+          <label><input type="checkbox" id="disputedToggle"> <span class="pin-dot disputed"></span> Disputed Sites</label>
+          <label><input type="checkbox" id="routesToggle" checked> <span class="route-swatch"></span> Route Lines</label>
+        </section>
+        <section>
+          <h2>Site Types</h2>
+          <div class="legend-row"><span class="pin-dot transit"></span> Transit Point</div>
+          <div class="legend-row"><span class="pin-dot documentation"></span> Documentation / Aid Node</div>
+          <div class="legend-row"><span class="pin-dot departure"></span> Departure Point</div>
+          <div class="legend-row"><span class="pin-dot residence"></span> Known Residence</div>
+        </section>
+      </div>
     </aside>
 
     <aside id="detailPanel" class="detail-panel" aria-live="polite"></aside>
